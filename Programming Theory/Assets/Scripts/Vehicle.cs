@@ -5,9 +5,10 @@ using UnityEngine;
 public class Vehicle : MonoBehaviour
 {
 
-    private Color color;
-    private float speed;
-    private string infoText;
+    [SerializeField] private Material materialOn;
+    [SerializeField] private Material materialOff;
+    [SerializeField] private float speed;
+    [SerializeField] private string infoText;
 
 
     public Vehicle()
