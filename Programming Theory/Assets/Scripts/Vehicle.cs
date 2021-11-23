@@ -11,8 +11,9 @@ public class Vehicle : MonoBehaviour
     [SerializeField] private float speed;
     public string infoText;
     public TMP_Text infoTextHolder;
+    public GameObject idSphere;
 
-    private bool isMoving;
+    [SerializeField] private bool isMoving;
 
 
     public Vehicle()
@@ -23,20 +24,39 @@ public class Vehicle : MonoBehaviour
     private void Update()
     {
         if (isMoving) {
-            Move();
+            Move(Vector3.forward);
         }
     }
 
-    //public abstract void SwitchLight(bool turnOn);
 
+    public void SetMoving()
+    {
+        Material lightMaterial = idSphere.GetComponent<Material>();
+        if (isMoving)
+        {
+            lightMaterial = materialOff;
+            isMoving = false;
+        } else
+        {
+            lightMaterial = materialOn;
+            isMoving = true;
+        }
+    }
+        
 
     public void ShowInfo()
     {
         infoTextHolder.SetText("Vehicle name: " + infoText);
     }
 
-    public void Move()
+    public void Move(Vector3 direction)
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime);
+    }
+
+    public void Move(Vector3 direction, Vector3 verticalDirection)
+    {
+        Vector3 dirVector = direction + verticalDirection;
+        transform.Translate(dirVector * speed * Time.deltaTime);
     }
 }

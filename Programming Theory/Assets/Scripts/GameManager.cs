@@ -17,14 +17,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //CheckKeyPressed();
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            UFO vehicle = FindObjectOfType<UFO>();
+            vehicle.SetMoving();
+
+        }
     }
 
     private void CheckKeyPressed()
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
-            
+            UFO vehicle = FindObjectOfType<UFO>();
+            vehicle.SetMoving();
         }
 
         if (Input.GetKeyDown(KeyCode.B))
@@ -32,10 +39,5 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
-    public GameObject FindCarByType(string carType)
-    {
-
-        return null;
-    }
+    
 }
