@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public abstract class Vehicle : MonoBehaviour
+public class Vehicle : MonoBehaviour
 {
 
-    [SerializeField] private Material materialOn;
-    [SerializeField] private Material materialOff;
+    public Material materialOn;
+    public Material materialOff;
     [SerializeField] private float speed;
-    [SerializeField] private string infoText;
+    public string infoText;
     public TMP_Text infoTextHolder;
+
+    private bool isMoving;
 
 
     public Vehicle()
     {
-
+        isMoving = false;
     }
 
     private void Update()
     {
-        
-
+        if (isMoving) {
+            Move();
+        }
     }
 
-    public abstract void SwitchLight(bool turnOn);
+    //public abstract void SwitchLight(bool turnOn);
 
 
     public void ShowInfo()
@@ -32,4 +35,8 @@ public abstract class Vehicle : MonoBehaviour
         infoTextHolder.SetText("Vehicle name: " + infoText);
     }
 
+    public void Move()
+    {
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
 }

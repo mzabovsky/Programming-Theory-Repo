@@ -19,4 +19,23 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    private void CheckKeyPressed()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+
+        }
+    }
+
+    public GameObject FindCarByType(string carType)
+    {
+
+        return null;
+    }
 }

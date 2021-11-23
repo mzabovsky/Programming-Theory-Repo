@@ -13,6 +13,19 @@ public class Bus : Vehicle
     // Update is called once per frame
     void Update()
     {
-        
+        Move();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            ShowInfo();
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+
+    }
+
+
 }
