@@ -13,11 +13,14 @@ public class Bus : Vehicle
     // Update is called once per frame
     void Update()
     {
-        Move(Vector3.forward);
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.B))
         {
-            ShowInfo();
+            SetMoving();
+        }
+
+        if (isMoving)
+        {
+            Move(Vector3.forward);
         }
     }
 

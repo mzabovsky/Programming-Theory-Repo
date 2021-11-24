@@ -411,7 +411,7 @@ MonoBehaviour:
   speed: 2
   infoText: Bus
   infoTextHolder: {fileID: 598932580}
-  idSphere: {fileID: 0}
+  idSphere: {fileID: 404277845}
   isMoving: 0
 --- !u!65 &204695338
 BoxCollider:

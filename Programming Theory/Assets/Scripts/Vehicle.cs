@@ -13,7 +13,7 @@ public class Vehicle : MonoBehaviour
     public TMP_Text infoTextHolder;
     public GameObject idSphere;
 
-    [SerializeField] private bool isMoving;
+    public bool isMoving;
 
 
     public Vehicle()
@@ -31,7 +31,7 @@ public class Vehicle : MonoBehaviour
 
     public void SetMoving()
     {
-        Material lightMaterial = idSphere.GetComponent<Material>();
+        Material lightMaterial = null;
         if (isMoving)
         {
             lightMaterial = materialOff;
@@ -41,12 +41,14 @@ public class Vehicle : MonoBehaviour
             lightMaterial = materialOn;
             isMoving = true;
         }
+
+        idSphere.GetComponent<Renderer>().material = lightMaterial;
     }
         
 
     public void ShowInfo()
     {
-        infoTextHolder.SetText("Vehicle name: " + infoText);
+        infoTextHolder.SetText("Vehicle \"" + infoText + "\" is moving.");
     }
 
     public void Move(Vector3 direction)
