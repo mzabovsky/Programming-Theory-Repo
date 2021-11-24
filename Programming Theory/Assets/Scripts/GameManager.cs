@@ -17,23 +17,30 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Bus bus = GameObject.FindObjectOfType<Bus>();
+            bus.SetMoving();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Van van = GameObject.FindObjectOfType<Van>();
+            van.SetMoving();
+        }
 
-    private void CheckKeyPressed()
-    {
-        /*
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Car car = GameObject.FindObjectOfType<Car>();
+            car.SetMoving();
+        }
+
         if (Input.GetKeyDown(KeyCode.U))
         {
-            UFO vehicle = FindObjectOfType<UFO>();
-            vehicle.SetMoving();
+            UFO ufo = GameObject.FindObjectOfType<UFO>();
+            ufo.SetMoving();
         }
+    }    
 
-        if (Input.GetKey(KeyCode.B))
-        {
-            Bus vehicle = FindObjectOfType<Bus>();
-            vehicle.Move(Vector3.forward);
-        }
-        */
-    }
-    
+
 }

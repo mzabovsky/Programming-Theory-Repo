@@ -7,28 +7,7 @@ public class Bus : Vehicle
     // Start is called before the first frame update
     void Start()
     {
-        
+        InfoText = "Bus";
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            SetMoving();
-        }
-
-        if (isMoving)
-        {
-            Move(Vector3.forward);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-
-
-    }
-
 
 }

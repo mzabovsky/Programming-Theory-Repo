@@ -7,12 +7,7 @@ public class Van : Vehicle
     // Start is called before the first frame update
     void Start()
     {
-        
+        InfoText = "Van";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

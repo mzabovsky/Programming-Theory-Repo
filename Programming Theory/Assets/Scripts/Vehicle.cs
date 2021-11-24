@@ -9,21 +9,38 @@ public class Vehicle : MonoBehaviour
     public Material materialOn;
     public Material materialOff;
     [SerializeField] private float speed;
-    public string infoText;
+    private string infoText;
+    public string InfoText 
+    {
+        get {
+            return infoText;
+        }
+        set
+        {
+            // Maximal text length
+            if (value.Length > 100)
+            {
+                infoText = value.Substring(0, 100);
+            } else
+            {
+                infoText = value;
+            }
+        }
+    }
     public TMP_Text infoTextHolder;
     public GameObject idSphere;
 
-    public bool isMoving;
+    public bool moving { get; private set; }
 
 
     public Vehicle()
     {
-        isMoving = false;
+        moving = false;
     }
 
     private void Update()
     {
-        if (isMoving) {
+        if (moving) {
             Move(Vector3.forward);
         }
     }
@@ -32,23 +49,31 @@ public class Vehicle : MonoBehaviour
     public void SetMoving()
     {
         Material lightMaterial = null;
-        if (isMoving)
+        if (moving)
         {
             lightMaterial = materialOff;
-            isMoving = false;
+            moving = false;
         } else
         {
             lightMaterial = materialOn;
-            isMoving = true;
+            moving = true;
         }
 
         idSphere.GetComponent<Renderer>().material = lightMaterial;
+        ShowInfo();
     }
         
 
     public void ShowInfo()
     {
-        infoTextHolder.SetText("Vehicle \"" + infoText + "\" is moving.");
+        if (moving)
+        {
+            infoTextHolder.SetText("\"" + InfoText + "\" is moving.");
+        } else
+        {
+            infoTextHolder.SetText("\"" + InfoText + "\" has stopped.");
+        }
+        
     }
 
     public void Move(Vector3 direction)
