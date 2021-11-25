@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
-
+    // ENCAPSULATION
     public static GUIManager guiManagerInstance;
 
     [SerializeField] private TMP_InputField playerNameInputField;

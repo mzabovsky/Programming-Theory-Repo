@@ -5,7 +5,7 @@ using TMPro;
 
 public class Vehicle : MonoBehaviour
 {
-
+    // ENCAPSULATION
     public Material materialOn;
     public Material materialOff;
     [SerializeField] private float speed;
@@ -45,7 +45,7 @@ public class Vehicle : MonoBehaviour
         }
     }
 
-
+    // ABSTRACTION
     public void SetMoving()
     {
         Material lightMaterial = null;
@@ -62,8 +62,8 @@ public class Vehicle : MonoBehaviour
         idSphere.GetComponent<Renderer>().material = lightMaterial;
         ShowInfo();
     }
-        
 
+    // ABSTRACTION
     public void ShowInfo()
     {
         if (moving)
@@ -76,11 +76,15 @@ public class Vehicle : MonoBehaviour
         
     }
 
+    // POLYMORPHISM
+    // ABSTRACTION
     public void Move(Vector3 direction)
     {
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
+    // POLYMORPHISM
+    // ABSTRACTION
     public void Move(Vector3 direction, Vector3 verticalDirection)
     {
         Vector3 dirVector = direction + verticalDirection;
