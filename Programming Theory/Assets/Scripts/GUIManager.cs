@@ -7,19 +7,29 @@ using UnityEngine.SceneManagement;
 public class GUIManager : MonoBehaviour
 {
 
-    [SerializeField] private TMP_InputField playerNameInputField;
+    public static GUIManager guiManagerInstance;
 
-    public static string playerName { get; private set; }
-    public static GUIManager guiManager;
+    [SerializeField] private TMP_InputField playerNameInputField;
+    public string playerName { get; private set; }
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (guiManager == null)
+
+    }
+
+    private void Awake()
+    {
+        if (guiManagerInstance != null)
         {
-            guiManager = this;
+            Destroy(gameObject);
+            return;
         }
+
+        guiManagerInstance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -30,7 +40,7 @@ public class GUIManager : MonoBehaviour
 
     public void ReadPlayerName()
     {
-        playerName = playerNameInputField.text;
+        GUIManager.guiManagerInstance.playerName = playerNameInputField.text;
         SceneManager.LoadScene(1);
     }
 

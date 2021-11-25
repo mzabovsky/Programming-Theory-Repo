@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     public GameObject[] cars;
-    private GUIManager guiManager;
+    public TMP_Text playerNameText;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        playerNameText.SetText("Player: " + GUIManager.guiManagerInstance.playerName);
     }
 
     // Update is called once per frame
